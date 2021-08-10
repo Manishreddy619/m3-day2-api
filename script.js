@@ -36,10 +36,7 @@ const getData = () => {
               <p class="card-text">${item.title}</p>
               <a href="#" class="btn btn-primary">${item.album.type}</a>
   </div>
-</div>
-                
-                
-                `;
+</div> `;
 			});
 		})
 
@@ -62,14 +59,22 @@ const getUniqueData = () => {
 		.then((result) => {
 			console.log(result.data);
 			let arr = [];
+			let newarr;
 			result.data.forEach(function (item) {
 				console.log(item);
 				arr.push(item.album.title);
-				let newarr = arr.filter((el, i) => arr.indexOf(el) === i);
+				newarr = arr.filter((el, i) => arr.indexOf(el) === i);
 				console.log(newarr);
-
-				const row = document.querySelector('.row');
-				row.innerHTML += `
+			});
+			newarr.forEach((el, i) => {
+				const row = document.querySelector('.row-1');
+				row.innerHTML += `<div><li>${el}</li></div>`;
+			});
+			result.data.forEach(function (item) {
+				for (let song of newarr) {
+					if (item.album.title === song) {
+						const row = document.querySelector('.unique');
+						row.innerHTML += `
               
                 <div class="card" >
                 <img src="${item.album.cover_big}" class="card-img-top img" alt="${item.album.title}">
@@ -78,10 +83,9 @@ const getUniqueData = () => {
               <p class="card-text">${item.title}</p>
               <a href="#" class="btn btn-primary">${item.album.type}</a>
   </div>
-</div>
-                
-                
-                `;
+</div> ;`;
+					}
+				}
 			});
 		})
 

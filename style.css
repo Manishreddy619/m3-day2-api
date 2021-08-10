@@ -1,7 +1,13 @@
 .img {
 	width: 100%;
-	height: 400px;
+	height: 100%;
+}
+body {
+	background-color: rgba(22, 24, 24, 0.349);
 }
 button {
 	margin-top: 3rem;
+}
+.card {
+	margin-top: 20px;
 }
